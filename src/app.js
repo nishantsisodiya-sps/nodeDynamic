@@ -4,6 +4,7 @@ const app = express();
 require('./db/connection')
 const path = require('path')
 const hbs = require('hbs')
+const user = require('./model/userMessage')
 
 //path
 const static_path = path.join(__dirname , '../public');
@@ -18,16 +19,23 @@ app.use(express.static(static_path))
 app.set("view engine" , "hbs");
 app.set('views' , template_path);
 hbs.registerPartials(partials_path)
+app.use(express.json())
+app.use(express.urlencoded({extended : false}))
 
 //Routings
 app.get('/' , (req , res)=>{
     res.render('index')
 })
 
-app.get('/contact' , (req , res)=>{
-    res.render('contact')
+app.post('/contact' , async(req , res)=>{
+    try {
+        const userData = new user(req.body)
+        await userData.save()
+        res.status(201).render("index")
+    } catch (error) {
+        res.status(500).send(error)
+    }
 })
-
 
 //Listening server
 

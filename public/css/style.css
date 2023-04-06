@@ -225,17 +225,32 @@ label {
 
 .form-control {
   padding: 2rem 1rem;
-  font-size: 1.7rem;
-  font-weight: 600;
+  font-size: 3.7rem;
+  font-weight: 900;
 }
 
 #emailHelp,
 ::placeholder {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 
 ::placeholder {
-  font-weight: 600;
+  font-weight :bolder;
+}
+
+/* text size inside input field */
+
+input[type = "text"]{
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+input[type = "email"]{
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+input[type = "number"]{
+  font-size: 1.8rem;
+  font-weight: bold;
 }
 
 /* footer sections ends  */
